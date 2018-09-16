@@ -1,34 +1,119 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
+apply plugin : 'com.android.application'
+apply plugin : 'kotlin-android'
+apply plugin : 'kotlin-kapt'
+apply plugin : 'de.mannodermaus.android-junit5'
+apply plugin : 'kotlin-android-extensions'
+apply plugin : 'realm-android'
 
 android {
-    compileSdkVersion 28
+
+    compileSdkVersion rootProject.config.sdkVersion
+    buildToolsVersion rootProject.config.buildToolSdkVersion
+
     defaultConfig {
         applicationId "com.example.mvvmsample"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def config = rootProject.ext.config
+
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.sdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner config.testInstrumentationRunner
+        testInstrumentationRunnerArgument config.testInstrumentationRunnerArgument[0], config.testInstrumentationRunnerArgument[1]
+        multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+        }
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+    }
+
+    kotlin {
+        experimental {
+            coroutines 'enable'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude "META-INF/LICENSE-notice.md"
+    }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.core:core-ktx:0.3'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    def dependencies = rootProject.ext.dependencies
+
+    implementation dependencies.appcompatV7
+    implementation dependencies.kotlinStdlib
+    implementation dependencies.kotlinReflect
+    implementation dependencies.constraintLayout
+    implementation dependencies.ktx
+    implementation dependencies.dagger
+    implementation dependencies.daggerAndroid
+    implementation dependencies.daggerAndroidSupport
+    implementation dependencies.ankoCommon
+    implementation dependencies.rxAndroid
+    implementation dependencies.rxBindingKotlin
+    implementation dependencies.rxPermissions
+    implementation dependencies.rxlifecycleKotlin
+    implementation dependencies.rxlifecycleAndroidLifecycleKotlin
+    implementation dependencies.rxKotlin
+    implementation dependencies.lifecycleViewmodelKtx
+    implementation dependencies.lifecycleExtensions
+
+    kapt dependencies.daggerComiler
+    kapt dependencies.daggerAndroidProcessor
+    kapt dependencies.lifecycleViewmodelKtx
+
+    testImplementation dependencies.junitJupiterApi
+    testImplementation dependencies.junitJupiterParams
+    testImplementation dependencies.mockitoKotlin
+    testImplementation dependencies.hamcrest
+    testImplementation dependencies.spekApi
+    testImplementation dependencies.spekJunitPlatformEngine
+    testRuntimeOnly dependencies.kotlinReflect
+
+    androidTestImplementation dependencies.testRunner
+    androidTestImplementation dependencies.androidRules
+    androidTestImplementation dependencies.espressoCore
+    androidTestImplementation dependencies.uiAutomator
+    androidTestImplementation dependencies.workManagerTesting
+
 }
+
+androidExtensions {
+    experimental = true
+}
+
+
+
+
