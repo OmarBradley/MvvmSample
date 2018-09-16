@@ -18,7 +18,6 @@ buildscript {
         classpath dependencies.kotlin
         classpath dependencies.junitPlatformGradlePlugin
         classpath dependencies.junit5
-        classpath dependencies.realm
     }
 
 }

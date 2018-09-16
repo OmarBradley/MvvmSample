@@ -33,6 +33,7 @@ ext {
             okhttp3                         : '3.11.0',
             gson                            : '2.8.5',
             glide                           : '4.8.0',
+            room                            : '2.0.0-beta01',
 
             spek2                           : '2.0.0-alpha.2',
             mockitoKotlin                   : '2.0.0-RC1',
@@ -72,6 +73,8 @@ ext {
             rxKotlin                          : "io.reactivex.rxjava2:rxkotlin:$ext.versionCode.rxKotlin",
             lifecycleViewmodelKtx             : "androidx.lifecycle:lifecycle-viewmodel-ktx:$ext.versionCode.lifecycle",
             lifecycleExtensions               : "androidx.lifecycle:lifecycle-extensions:$ext.versionCode.lifecycle",
+            roomRuntime                       : "androidx.room:room-runtime:$ext.versionCode.room",
+            roomRxJava2                       : "androidx.room:room-rxjava2:$ext.versionCode.room",
             workManagerKtx                    : "android.arch.work:work-runtime-ktx:$ext.versionCode.workManager",
             pagingRx                          : "android.arch.paging:rxjava2:$ext.versionCode.paging",
             pagingRuntime                     : "android.arch.paging:runtime:$ext.versionCode.paging",
@@ -85,6 +88,7 @@ ext {
             daggerComiler                     : "com.google.dagger:dagger-compiler:$ext.versionCode.dagger",
             daggerAndroidProcessor            : "com.google.dagger:dagger-android-processor:$ext.versionCode.dagger",
             glideCompiler                     : "com.github.bumptech.glide:compiler:$ext.versionCode.glide",
+            roomCompilerKtx                   : "androidx.room:room-compiler-ktx:$ext.versionCode.room",
 
             spekApi                           : "org.spekframework.spek2:spek-dsl-jvm:$ext.versionCode.spek2",
             spekJunitPlatformEngine           : "org.spekframework.spek2:spek-runner-junit5:$ext.versionCode.spek2",
@@ -94,6 +98,7 @@ ext {
             junitJupiterParams                : "org.junit.jupiter:junit-jupiter-params:$ext.versionCode.junitJupiter",
             junitPlatformRunner               : "org.junit.platform:junit-platform-runner:$ext.versionCode.junitPlatformRunner",
             hamcrest                          : "org.hamcrest:hamcrest-all:$ext.versionCode.hamcrest",
+            roomTesting                       : "androidx.room:room-testing:$ext.versionCode.room",
 
             testRunner                        : "com.android.support.test:runner:$ext.versionCode.testRunner",
             androidRules                      : "com.android.support.test:rules:$ext.versionCode.androidRules",

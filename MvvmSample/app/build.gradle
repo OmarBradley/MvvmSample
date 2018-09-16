@@ -3,7 +3,6 @@ apply plugin : 'kotlin-android'
 apply plugin : 'kotlin-kapt'
 apply plugin : 'de.mannodermaus.android-junit5'
 apply plugin : 'kotlin-android-extensions'
-apply plugin : 'realm-android'
 
 android {
 
@@ -89,10 +88,13 @@ dependencies {
     implementation dependencies.rxKotlin
     implementation dependencies.lifecycleViewmodelKtx
     implementation dependencies.lifecycleExtensions
+    implementation dependencies.roomRuntime
+    implementation dependencies.roomRxJava2
 
     kapt dependencies.daggerComiler
     kapt dependencies.daggerAndroidProcessor
     kapt dependencies.lifecycleViewmodelKtx
+    kapt dependencies.roomCompilerKtx
 
     testImplementation dependencies.junitJupiterApi
     testImplementation dependencies.junitJupiterParams
@@ -100,6 +102,7 @@ dependencies {
     testImplementation dependencies.hamcrest
     testImplementation dependencies.spekApi
     testImplementation dependencies.spekJunitPlatformEngine
+    testImplementation dependencies.roomTesting
     testRuntimeOnly dependencies.kotlinReflect
 
     androidTestImplementation dependencies.testRunner
