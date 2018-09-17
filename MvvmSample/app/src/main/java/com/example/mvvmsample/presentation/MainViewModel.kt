@@ -12,10 +12,10 @@ import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 
 class MainViewModel(
-        val checkEmailUseCase: CheckEmailUseCase,
-        val deleteEmailUseCase: DeleteEmailUseCase,
-        val getEmailUseCase: GetEmailUseCase,
-        val saveEmailUseCase: SaveEmailUseCase
+        private val checkEmailUseCase: CheckEmailUseCase,
+        private val deleteEmailUseCase: DeleteEmailUseCase,
+        private val getEmailUseCase: GetEmailUseCase,
+        private val saveEmailUseCase: SaveEmailUseCase
 ) : BaseViewModel() {
 
     val validationMessage: BehaviorSubject<String> = BehaviorSubject.createDefault("이메일이 비어 있습니다")
