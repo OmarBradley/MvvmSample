@@ -1,14 +1,14 @@
 package com.example.mvvmsample.domain.usecase
 
 import com.example.mvvmsample.domain.repository.EmailRepository
-import com.example.mvvmsample.entity.Email
+import com.example.mvvmsample.entity.EmailEntity
 import io.reactivex.Completable
 
 class SaveEmailUseCase(
-        val emailRepository: EmailRepository
+        private val emailRepository: EmailRepository
 ) {
 
-    fun saveEmail(email: Email): Completable =
-            emailRepository.saveEmail(email)
+    fun saveEmail(emailEntity: EmailEntity): Completable =
+            emailRepository.saveEmail(emailEntity)
 
 }

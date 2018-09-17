@@ -4,7 +4,7 @@ import com.example.mvvmsample.domain.repository.EmailRepository
 import io.reactivex.Completable
 
 class DeleteEmailUseCase(
-        val emailRepository: EmailRepository
+        private val emailRepository: EmailRepository
 ) {
 
     fun deleteAllEmail(): Completable =
