@@ -3,6 +3,7 @@ package com.example.mvvmsample.data.persistence
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import io.reactivex.Single
 
 @Dao
 interface EmailDao {
@@ -11,12 +12,12 @@ interface EmailDao {
     fun deleteAllEmail()
 
     @Insert
-    fun insertEmail(email: Email)
+    fun insertEmail(emailRoomObject: EmailRoomObject)
 
     @Query("SELECT * FROM email WHERE email.email = :email")
-    fun getEmail(email: String)
+    fun getEmail(email: String): Single<EmailRoomObject>
 
     @Query("SELECT * FROM email")
-    fun getAllEmails()
+    fun getAllEmails(): Single<List<EmailRoomObject>>
 
 }
