@@ -88,7 +88,7 @@ ext {
             daggerComiler                     : "com.google.dagger:dagger-compiler:$ext.versionCode.dagger",
             daggerAndroidProcessor            : "com.google.dagger:dagger-android-processor:$ext.versionCode.dagger",
             glideCompiler                     : "com.github.bumptech.glide:compiler:$ext.versionCode.glide",
-            roomCompilerKtx                   : "androidx.room:room-compiler-ktx:$ext.versionCode.room",
+            roomCompiler                      : "androidx.room:room-compiler:$ext.versionCode.room",
 
             spekApi                           : "org.spekframework.spek2:spek-dsl-jvm:$ext.versionCode.spek2",
             spekJunitPlatformEngine           : "org.spekframework.spek2:spek-runner-junit5:$ext.versionCode.spek2",

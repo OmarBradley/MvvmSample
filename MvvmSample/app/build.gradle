@@ -94,7 +94,7 @@ dependencies {
     kapt dependencies.daggerComiler
     kapt dependencies.daggerAndroidProcessor
     kapt dependencies.lifecycleViewmodelKtx
-    kapt dependencies.roomCompilerKtx
+    kapt dependencies.roomCompiler
 
     testImplementation dependencies.junitJupiterApi
     testImplementation dependencies.junitJupiterParams
