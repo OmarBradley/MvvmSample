@@ -1,0 +1,7 @@
+package com.example.mvvmsample.base.di
+
+import javax.inject.Qualifier
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ApplicationContext

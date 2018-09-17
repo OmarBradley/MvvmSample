@@ -2,6 +2,7 @@ package com.example.mvvmsample.base.di
 
 import android.app.Application
 import com.example.mvvmsample.MvvmSampleApplication
+import com.example.mvvmsample.domain.module.DomainModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -11,6 +12,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     (ApplicationModule::class),
+    (DomainModule::class),
     (AndroidSupportInjectionModule::class),
     (ActivityBindingModule::class)
 ])

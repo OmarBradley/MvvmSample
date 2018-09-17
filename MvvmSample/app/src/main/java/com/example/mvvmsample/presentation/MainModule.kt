@@ -2,6 +2,9 @@ package com.example.mvvmsample.presentation
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmsample.domain.usecase.CheckEmailUseCase
+import com.example.mvvmsample.domain.usecase.DeleteEmailUseCase
+import com.example.mvvmsample.domain.usecase.GetEmailUseCase
+import com.example.mvvmsample.domain.usecase.SaveEmailUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -13,11 +16,12 @@ class MainModule {
             ViewModelProviders.of(activity, viewModelFactory)[MainViewModel::class.java]
 
     @Provides
-    fun provideViewModelFactory(checkEmailUseCase: CheckEmailUseCase): MainViewModelFactory =
-            MainViewModelFactory(checkEmailUseCase)
-
-    @Provides
-    fun provideCheckEmailUseCase(): CheckEmailUseCase =
-            CheckEmailUseCase()
+    fun provideViewModelFactory(
+            checkEmailUseCase: CheckEmailUseCase,
+            deleteEmailUseCase: DeleteEmailUseCase,
+            getEmailUseCase: GetEmailUseCase,
+            saveEmailUseCase: SaveEmailUseCase
+    ): MainViewModelFactory =
+            MainViewModelFactory(checkEmailUseCase, deleteEmailUseCase, getEmailUseCase, saveEmailUseCase)
 
 }
