@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
         AutoClearedDisposable(lifecycleOwner = this, alwaysClearOnStop = false)
     }
 
-    private val disposable: AutoClearedDisposable by lazy {
+     private val disposable: AutoClearedDisposable by lazy {
         AutoClearedDisposable(lifecycleOwner = this)
     }
 
