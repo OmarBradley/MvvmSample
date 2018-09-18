@@ -5,7 +5,7 @@ import com.example.mvvmsample.entity.EmailEntity
 import io.reactivex.Single
 
 class GetEmailUseCase(
-        val emailRepository: EmailRepository
+        private val emailRepository: EmailRepository
 ) {
 
     fun getEmail(email: String): Single<EmailEntity> =

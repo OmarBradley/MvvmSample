@@ -1,13 +1,16 @@
 package com.example.mvvmsample.presentation
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import com.example.mvvmsample.R
+import com.example.mvvmsample.base.customview.ProgressDialogFragment
 import com.example.mvvmsample.base.presentation.AutoClearedDisposable
 import com.example.mvvmsample.base.presentation.BaseActivity
 import com.example.mvvmsample.base.presentation.plusAssign
 import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxbinding2.widget.afterTextChangeEvents
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -19,7 +22,7 @@ class MainActivity : BaseActivity() {
         AutoClearedDisposable(lifecycleOwner = this, alwaysClearOnStop = false)
     }
 
-     private val disposable: AutoClearedDisposable by lazy {
+    private val disposable: AutoClearedDisposable by lazy {
         AutoClearedDisposable(lifecycleOwner = this)
     }
 
@@ -44,7 +47,7 @@ class MainActivity : BaseActivity() {
 
         viewDisposable += viewModel.emailInputBackgroundColor
                 .subscribe { backgroundColor ->
-                    editText_emailInput.setBackgroundColor(backgroundColor)
+                    editText_emailInput.backgroundTintList = ColorStateList.valueOf(backgroundColor)
                 }
 
         viewDisposable += viewModel.isEnableSubmitEmailButton
@@ -52,9 +55,21 @@ class MainActivity : BaseActivity() {
                     button_submitEmail.isEnabled = isEnable
                 }
 
+        viewDisposable += viewModel.isShowLoadingDialog
+                .subscribe { isShow ->
+                    if (isShow)
+                        ProgressDialogFragment.showDialog(this)
+                    else
+                        ProgressDialogFragment.dismissDialog()
+                }
+
+        viewDisposable += viewModel.toastState
+                .filter { it.isShow }
+                .subscribe { toast(it.message) }
+
         viewDisposable += button_submitEmail.clicks()
                 .subscribe {
-
+                    disposable += viewModel.checkDuplicateEmail(editText_emailInput.text.toString())
                 }
 
     }
