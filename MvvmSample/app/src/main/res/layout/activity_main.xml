@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.main.MainActivity">
 
     <EditText
         android:id="@+id/editText_emailInput"
@@ -35,10 +35,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="submit"
-        app:layout_constraintBottom_toTopOf="@+id/textView_storedEmail"
+        app:layout_constraintBottom_toTopOf="@+id/button_deleteEmail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_validationMessage" />
+
+    <Button
+        android:id="@+id/button_deleteEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        app:layout_constraintBottom_toTopOf="@+id/textView_storedEmail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_submitEmail" />
 
     <TextView
         android:id="@+id/textView_storedEmail"
@@ -47,6 +57,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_submitEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/button_deleteEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

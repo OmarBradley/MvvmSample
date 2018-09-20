@@ -1,7 +1,7 @@
 package com.example.mvvmsample.base.di
 
-import com.example.mvvmsample.presentation.MainActivity
-import com.example.mvvmsample.presentation.MainModule
+import com.example.mvvmsample.presentation.main.MainActivity
+import com.example.mvvmsample.presentation.main.MainModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

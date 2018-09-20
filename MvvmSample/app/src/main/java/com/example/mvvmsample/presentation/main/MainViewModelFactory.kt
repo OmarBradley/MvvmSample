@@ -1,4 +1,4 @@
-package com.example.mvvmsample.presentation
+package com.example.mvvmsample.presentation.main
 
 import com.example.mvvmsample.base.presentation.BaseViewModel
 import com.example.mvvmsample.base.presentation.BaseViewModelFactory

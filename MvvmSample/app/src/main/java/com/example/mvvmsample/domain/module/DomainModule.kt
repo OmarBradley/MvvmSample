@@ -32,7 +32,6 @@ class DomainModule {
             CheckEmailUseCase()
 
     @Provides
-    @Singleton
     fun provideEmailRoomRepository(emailDao: EmailDao): EmailRepository =
             EmailRoomRepository(emailDao)
 

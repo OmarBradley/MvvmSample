@@ -10,5 +10,4 @@ object EmailRoomMapper : Mapper<EmailEntity, EmailRoomObject> {
 
     override fun convertEntityToData(entity: EmailEntity): EmailRoomObject =
             EmailRoomObject(entity.email)
-
 }

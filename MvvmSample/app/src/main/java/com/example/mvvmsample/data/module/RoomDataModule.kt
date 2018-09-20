@@ -22,6 +22,7 @@ class RoomDataModule {
     fun provideEmailDatabase(@ApplicationContext context: Context): EmailDatabase =
             Room.databaseBuilder(context,
                     EmailDatabase::class.java, "email_database.db")
+                    .fallbackToDestructiveMigration()
                     .build()
 
 }

@@ -1,4 +1,4 @@
-package com.example.mvvmsample.presentation
+package com.example.mvvmsample.presentation.main
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmsample.domain.usecase.CheckEmailUseCase

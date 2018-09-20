@@ -1,4 +1,4 @@
-package com.example.mvvmsample.presentation
+package com.example.mvvmsample.presentation.main
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -40,9 +40,14 @@ class MainActivity : BaseActivity() {
                     disposable += viewModel.checkEmail(emailInput)
                 }
 
-        viewDisposable += viewModel.validationMessage
+        viewDisposable += viewModel.validationMessageText
                 .subscribe { validationMessage ->
                     textView_validationMessage.text = validationMessage
+                }
+
+        viewDisposable += viewModel.validationMessageTextColor
+                .subscribe { textColor ->
+                    textView_validationMessage.setTextColor(textColor)
                 }
 
         viewDisposable += viewModel.emailInputBackgroundColor
@@ -69,7 +74,17 @@ class MainActivity : BaseActivity() {
 
         viewDisposable += button_submitEmail.clicks()
                 .subscribe {
-                    disposable += viewModel.checkDuplicateEmail(editText_emailInput.text.toString())
+                    disposable += viewModel.submitEmail(editText_emailInput.text.toString())
+                }
+
+        viewDisposable += viewModel.storedEmailText
+                .subscribe {
+                    textView_storedEmail.text = it
+                }
+
+        viewDisposable += button_deleteEmail.clicks()
+                .subscribe {
+                    disposable += viewModel.deleteEmail()
                 }
 
     }
