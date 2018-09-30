@@ -1,7 +1,7 @@
 package com.example.mvvmsample.presentation.main
 
-import com.example.mvvmsample.base.presentation.BaseViewModel
-import com.example.mvvmsample.base.presentation.BaseViewModelFactory
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmsample.domain.usecase.CheckEmailUseCase
 import com.example.mvvmsample.domain.usecase.DeleteEmailUseCase
 import com.example.mvvmsample.domain.usecase.GetEmailUseCase
@@ -12,9 +12,10 @@ class MainViewModelFactory(
         private val deleteEmailUseCase: DeleteEmailUseCase,
         private val getEmailUseCase: GetEmailUseCase,
         private val saveEmailUseCase: SaveEmailUseCase
-) : BaseViewModelFactory() {
+) : ViewModelProvider.Factory {
 
-    override fun createViewModel(): BaseViewModel =
-            MainViewModel(checkEmailUseCase, deleteEmailUseCase, getEmailUseCase, saveEmailUseCase)
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+            MainViewModel(checkEmailUseCase, deleteEmailUseCase, getEmailUseCase, saveEmailUseCase) as T
 
 }

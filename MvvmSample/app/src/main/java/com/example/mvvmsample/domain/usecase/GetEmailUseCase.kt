@@ -10,9 +10,6 @@ class GetEmailUseCase(
         private val emailRepository: EmailRepository
 ) {
 
-    fun getEmail(email: String): Single<EmailEntity> =
-            emailRepository.getEmail(email)
-
     fun getAllEmails(): Single<List<EmailEntity>> =
             emailRepository.getAllEmails()
 

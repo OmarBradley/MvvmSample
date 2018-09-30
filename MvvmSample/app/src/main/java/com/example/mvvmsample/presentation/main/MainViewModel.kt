@@ -2,7 +2,7 @@ package com.example.mvvmsample.presentation.main
 
 import android.graphics.Color
 import androidx.annotation.ColorInt
-import com.example.mvvmsample.base.presentation.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.example.mvvmsample.base.viewdata.ToastStateData
 import com.example.mvvmsample.domain.usecase.CheckEmailUseCase
 import com.example.mvvmsample.domain.usecase.DeleteEmailUseCase
@@ -22,7 +22,7 @@ class MainViewModel(
         private val deleteEmailUseCase: DeleteEmailUseCase,
         private val getEmailUseCase: GetEmailUseCase,
         private val saveEmailUseCase: SaveEmailUseCase
-) : BaseViewModel() {
+) : ViewModel() {
 
     val validationMessageText: BehaviorSubject<String> = BehaviorSubject.createDefault("이메일이 비어 있습니다")
 
