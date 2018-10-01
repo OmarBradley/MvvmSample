@@ -14,8 +14,8 @@ class MainViewModelFactory(
         private val saveEmailUseCase: SaveEmailUseCase
 ) : ViewModelProvider.Factory {
 
-    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-            MainViewModel(checkEmailUseCase, deleteEmailUseCase, getEmailUseCase, saveEmailUseCase) as T
+            modelClass.getConstructor(CheckEmailUseCase::class.java, DeleteEmailUseCase::class.java, GetEmailUseCase::class.java, SaveEmailUseCase::class.java)
+                    .newInstance(checkEmailUseCase, deleteEmailUseCase, getEmailUseCase, saveEmailUseCase)
 
 }
